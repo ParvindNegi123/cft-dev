@@ -1,0 +1,42 @@
+name: Build and deploy Node.js app
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Set up Node.js version
+        uses: actions/setup-node@v1
+        with:
+          node-version: "16.x"
+
+      - name: Sync files
+        env:
+          dest: "root@207.244.248.125:/var/www/html/app.contingentfitness.com"
+        run: |
+          echo "${{secrets.DEPLOY_KEY}}" > deploy_key
+          chmod 600 ./deploy_key
+          rsync -avz --usermap=*:www-data --groupmap=*:www-data -e 'ssh -i ./deploy_key -p 2112 -o StrictHostKeyChecking=no' \
+            --exclude deploy_key \
+            --exclude /.github/ \
+            ./ ${{env.dest}}
+            
+      - name: Restart service
+        uses: appleboy/ssh-action@v0.1.7
+        with:
+          host: "207.244.248.125"
+          username: "root"
+          key: ${{ secrets.DEPLOY_KEY }}
+          port: "2112"
+          script: |
+            cd /var/www/html/app.contingentfitness.com
+            npm install
+            npm run build

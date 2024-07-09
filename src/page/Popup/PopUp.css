@@ -1,0 +1,57 @@
+.sign-in-default.edit-user-page {
+  background: rgba(0, 0, 0, 0.4);
+}
+.sign-in-default.edit-user-page .form-box-outer {
+  box-shadow: 1px 1px 10px #b5b5b5;
+  padding: 30px;
+  background-color: #fff;
+  border-radius: 12px;
+}
+.sign-in-default.edit-user-page .container h1 {
+  margin-bottom: 40px;
+}
+.sign-in-default.edit-user-page .container .close-btn {
+  width: 30px;
+  height: 30px;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50px;
+  position: absolute;
+  top: 30px;
+  right: 20px;
+  cursor: pointer;
+  border: 1px #000 solid;
+}
+.sign-in-default.edit-user-page .container .form-box {
+  max-width: 100%;
+}
+.sign-in-default.edit-user-page .container .form-box form {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0px 40px;
+}
+.sign-in-default.edit-user-page .container .form-box form .input-box input[type=radio] {
+  height: 20px;
+  width: 20px;
+  margin-right: 10px;
+  vertical-align: middle;
+}
+.sign-in-default.edit-user-page .container .form-box form .input-box .heading {
+  margin-bottom: 10px;
+}
+.sign-in-default.edit-user-page .container .form-box form .radio-box label {
+  display: block;
+  margin-top: 10px;
+  cursor: pointer;
+}
+.sign-in-default.edit-user-page .container .form-box form .submit-box {
+  display: flex;
+  gap: 20px;
+}
+.sign-in-default.edit-user-page .container .form-box form .submit-box .cancel-btn {
+  background-color: transparent !important;
+  border: 1px #E53E14 solid;
+  color: #E53E14;
+}/*# sourceMappingURL=PopUp.css.map */
